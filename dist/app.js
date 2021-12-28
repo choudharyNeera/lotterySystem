@@ -9,5 +9,5 @@ const tickets_1 = __importDefault(require("./routes/tickets"));
 const app = (0, express_1.default)();
 app.use("/user", users_1.default);
 app.use("/ticket", tickets_1.default);
-const port = process.env.PORT || 3000;
-app.listen(port, () => console.log(`Server started on ${port}`));
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server started on ${port}`));
