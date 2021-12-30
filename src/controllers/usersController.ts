@@ -50,6 +50,7 @@ export const login: RequestHandler = async (req, res, next) => {
         const payload = {
           user: {
             id: userExist.id,
+            role: userExist.userType,
           },
         };
 
@@ -76,13 +77,18 @@ export const login: RequestHandler = async (req, res, next) => {
 };
 
 export const profileDetail: RequestHandler = async (req, res, next) => {
-  // const userId = <string>res.locals.jwtPayload.user.id;
-  res.send(res.locals.jwtPayload);
-  // const details = await User.findById({ userId });
+  try {
+    const userId = res.locals.jwt.id;
+    const details = await User.findOne({ _id: userId }).select(
+      "_id name credit "
+    );
 
-  // if (details) {
-  //   res.json({ status: 200, message: "profile details", data: details });
-  // } else {
-  //   res.json({ status: 400, message: "Invalid token" });
-  // }
+    if (details) {
+      res.json({ status: 200, message: "profile details", data: details });
+    } else {
+      res.json({ status: 400, message: "Invalid token" });
+    }
+  } catch {
+    res.json({ status: 400, message: "Some error occured" });
+  }
 };

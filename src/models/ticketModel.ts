@@ -13,7 +13,6 @@ interface ITicket extends mongoose.Document {
 const TicketSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true,
   },
   code: {
     type: String,
@@ -46,8 +45,7 @@ const TicketSchema = new mongoose.Schema({
   },
 });
 
-// const Ticket = mongoose.model<ITicket>("Ticket", TicketSchema);
 const Ticket =
   (mongoose.models.Ticket as Model<ITicket>) ||
-  mongoose.model<ITicket>("User", TicketSchema);
+  mongoose.model<ITicket>("Ticket", TicketSchema);
 export default Ticket;

@@ -1,7 +1,6 @@
 import jwt from "jsonwebtoken";
 const config = require("config");
 import User from "../models/userModel";
-
 import { RequestHandler } from "express";
 
 export const middleware: RequestHandler = async (req, res, next) => {
@@ -12,10 +11,10 @@ export const middleware: RequestHandler = async (req, res, next) => {
   } else {
     try {
       const decoded = <any>jwt.verify(token, config.get("jwtToken"));
-      res.locals.jwtPayload = decoded._id;
+      res.locals.jwt = decoded.user;
       next();
     } catch (err) {
-      res.json({ status: 400, message: err });
+      res.json({ status: 400, message: "Incorrect token" });
     }
   }
 };
