@@ -1,8 +1,9 @@
 import { Router } from "express";
-import { allTickets } from "../controllers/ticketsController";
+import { allTickets, ticketById } from "../controllers/ticketsController";
 import middleware from "../middleware/auth";
 
 const router = Router();
 
-router.post("/allTickets", allTickets);
+router.get("/allTickets", allTickets);
+router.get("/:ticketId", middleware, ticketById);
 export default router;

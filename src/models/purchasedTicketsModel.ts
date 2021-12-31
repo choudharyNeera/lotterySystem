@@ -8,6 +8,7 @@ const ObjectId = require("mongoose").Types.ObjectId;
 interface IpurchasedTicket extends mongoose.Document {
   userId: String;
   ticketId: string;
+  status: Boolean;
   createdAt: Date;
 }
 const PurchasedTicketSchema = new mongoose.Schema({
@@ -20,6 +21,10 @@ const PurchasedTicketSchema = new mongoose.Schema({
     type: ObjectId,
     ref: "ticketModel",
     required: true,
+  },
+  status: {
+    type: Boolean,
+    default: true,
   },
   createdAt: {
     type: Date,

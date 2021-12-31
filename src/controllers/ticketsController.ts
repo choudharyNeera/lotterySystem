@@ -8,6 +8,12 @@ export const allTickets: RequestHandler = async (req, res, next) => {
   res.json({ status: 200, message: "Available tickets", tickets: tickets });
 };
 
+export const ticketById: RequestHandler = async (req, res, next) => {
+  const ticketId = req.params.ticketId;
+  const ticket = await Ticket.findById(ticketId);
+  res.json({ status: 200, message: "Ticket details", ticket: ticket });
+};
+
 export const createTicket: RequestHandler = async (req, res, next) => {
   try {
     const role = res.locals.jwt.role;

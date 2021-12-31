@@ -79,9 +79,7 @@ export const login: RequestHandler = async (req, res, next) => {
 export const profileDetail: RequestHandler = async (req, res, next) => {
   try {
     const userId = res.locals.jwt.id;
-    const details = await User.findOne({ _id: userId }).select(
-      "_id name credit "
-    );
+    const details = await User.findById(userId).select("name credit ");
 
     if (details) {
       res.json({ status: 200, message: "profile details", data: details });

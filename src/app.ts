@@ -2,6 +2,7 @@ import express from "express";
 import usersRoutes from "./routes/users";
 import ticketsRoutes from "./routes/tickets";
 import authRoutes from "./routes/auth";
+import purchaseRoutes from "./routes/purchaseRewards";
 import * as bodyParser from "body-parser";
 import { connectDB } from "./db";
 
@@ -10,6 +11,7 @@ app.use(bodyParser.json());
 
 app.use("/users", usersRoutes);
 app.use("/tickets", ticketsRoutes);
+app.use("/purchase", purchaseRoutes);
 app.use("/", authRoutes);
 
 const PORT = process.env.PORT || 3000;
