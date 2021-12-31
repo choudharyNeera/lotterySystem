@@ -35,6 +35,6 @@ app.use("/users", users_1.default);
 app.use("/tickets", tickets_1.default);
 app.use("/purchase", purchaseRewards_1.default);
 app.use("/", auth_1.default);
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server started on ${PORT}`));
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server started on ${PORT} port`));
 console.log((0, db_1.connectDB)());

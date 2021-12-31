@@ -14,6 +14,6 @@ app.use("/tickets", ticketsRoutes);
 app.use("/purchase", purchaseRoutes);
 app.use("/", authRoutes);
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server started on ${PORT}`));
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server started on ${PORT} port`));
 console.log(connectDB());
